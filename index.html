@@ -1,12 +1,1057 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio của lam_data_nghiep_du, tập trung vào tự động hóa dữ liệu, đối soát nghiệp vụ, công cụ desktop và dự án GitHub.">
+  <meta name="theme-color" content="#f6f7f1">
+  <meta property="og:title" content="lam_data_nghiep_du - Data automation developer">
+  <meta property="og:description" content="Các dự án GitHub về tự động hóa dữ liệu, đối soát, email workflow và ứng dụng học tập.">
+  <meta property="og:image" content="assets/developer-workspace-hero.jpg">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/174565603?v=4">
+  <title>lam_data_nghiep_du - GitHub Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f7f1;
+      --surface: #fbfcf7;
+      --surface-soft: #eef2e9;
+      --text: #15201a;
+      --muted: #526056;
+      --subtle: #748078;
+      --line: rgba(21, 32, 26, 0.14);
+      --accent: #167a52;
+      --accent-strong: #0f5f3e;
+      --accent-soft: rgba(22, 122, 82, 0.12);
+      --shadow: 0 24px 80px rgba(26, 38, 31, 0.14);
+      --radius: 18px;
+      --radius-small: 12px;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111510;
+        --surface: #171c16;
+        --surface-soft: #1f281f;
+        --text: #eef3e9;
+        --muted: #b4beb1;
+        --subtle: #899483;
+        --line: rgba(238, 243, 233, 0.16);
+        --accent: #55c48f;
+        --accent-strong: #91e1b9;
+        --accent-soft: rgba(85, 196, 143, 0.14);
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, var(--accent-soft), transparent 30rem),
+        linear-gradient(180deg, var(--bg), var(--surface-soft));
+      color: var(--text);
+      min-height: 100dvh;
+      letter-spacing: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      height: 72px;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 740;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+    }
+
+    .brand span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: calc(100dvh - 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 72px);
+      padding: 58px 0 72px;
+    }
+
+    .hero-copy {
+      min-width: 0;
+      width: 100%;
+      animation: rise-in 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 12ch;
+      font-size: clamp(3rem, 7vw, 6.1rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      margin: 24px 0 0;
+      width: min(100%, 52ch);
+      color: var(--muted);
+      font-size: clamp(1.04rem, 1.8vw, 1.2rem);
+      line-height: 1.65;
+    }
+
+    .hero p span {
+      display: block;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 0 20px;
+      font-weight: 760;
+      white-space: nowrap;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .button:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #f5fff9;
+      border: 1px solid var(--accent);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      animation: image-in 760ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      background: var(--surface-soft);
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+    }
+
+    .profile-panel {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: min(350px, calc(100% - 36px));
+      border-radius: var(--radius-small);
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      background: rgba(18, 25, 20, 0.76);
+      color: #f7fff8;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 18px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+    }
+
+    .profile-panel strong {
+      display: block;
+      font-size: 1.08rem;
+    }
+
+    .profile-panel p {
+      margin: 8px 0 0;
+      color: rgba(247, 255, 248, 0.78);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .logo-rail {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+      background: color-mix(in srgb, var(--surface) 62%, transparent);
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-row a {
+      min-height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-small);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .logo-row a:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
+    }
+
+    .logo-row img {
+      width: 28px;
+      height: 28px;
+      filter: grayscale(1);
+      opacity: 0.8;
+    }
+
+    section {
+      padding: clamp(72px, 10vw, 116px) 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .section-lede {
+      margin: 20px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-grid > *,
+    .project-grid > *,
+    .workflow-grid > *,
+    .contact-box > * {
+      min-width: 0;
+    }
+
+    .about-list {
+      margin: 34px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .about-list li {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .about-list span {
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.86rem;
+    }
+
+    .about-list p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .stat-block {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 26px;
+      box-shadow: 0 16px 48px rgba(26, 38, 31, 0.08);
+    }
+
+    .stat-block img {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+    }
+
+    .stat-block dl {
+      margin: 28px 0 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .stat-block div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .stat-block dt {
+      color: var(--muted);
+    }
+
+    .stat-block dd {
+      margin: 0;
+      font-weight: 760;
+    }
+
+    .projects {
+      background: color-mix(in srgb, var(--surface-soft) 72%, transparent);
+    }
+
+    .project-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      min-height: 214px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 46%, var(--line));
+      box-shadow: 0 16px 42px rgba(26, 38, 31, 0.1);
+    }
+
+    .project-card.featured {
+      min-height: 446px;
+      background:
+        linear-gradient(145deg, color-mix(in srgb, var(--accent) 16%, var(--surface)), var(--surface) 58%),
+        var(--surface);
+    }
+
+    .project-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: clamp(1.3rem, 2vw, 2rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .project-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      background: color-mix(in srgb, var(--surface-soft) 72%, transparent);
+      white-space: nowrap;
+    }
+
+    .project-link {
+      color: var(--accent-strong);
+      font-weight: 760;
+      width: fit-content;
+    }
+
+    .skeleton {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skeleton::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+      transform: translateX(-100%);
+      animation: shimmer 1.4s ease-in-out infinite;
+    }
+
+    .error-box {
+      margin-top: 18px;
+      border-radius: var(--radius-small);
+      border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line));
+      background: var(--accent-soft);
+      color: var(--text);
+      padding: 14px 16px;
+      line-height: 1.55;
+    }
+
+    .workflow-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .workflow-panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 28px;
+    }
+
+    .workflow-panel h3 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.4vw, 2.4rem);
+      letter-spacing: 0;
+      line-height: 1.06;
+    }
+
+    .workflow-panel p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .workflow-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .workflow-list div {
+      border-radius: var(--radius-small);
+      background: var(--surface-soft);
+      padding: 18px;
+      min-height: 124px;
+    }
+
+    .workflow-list strong {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .side-note {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 100%;
+      background:
+        linear-gradient(160deg, var(--accent-soft), transparent 58%),
+        var(--surface);
+    }
+
+    .side-note p {
+      font-size: 1.18rem;
+    }
+
+    .contact {
+      padding-bottom: 48px;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: clamp(28px, 5vw, 52px);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .contact-box p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 58ch;
+    }
+
+    footer {
+      padding: 0 0 36px;
+      color: var(--subtle);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes image-in {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes shimmer {
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 0.88rem;
+      }
+
+      .hero,
+      .about-grid,
+      .project-grid,
+      .workflow-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 40px 0 64px;
+      }
+
+      .hero h1 {
+        max-width: 9ch;
+      }
+
+      .hero-media,
+      .hero-media img {
+        min-height: 420px;
+      }
+
+      .project-card.featured {
+        min-height: 360px;
+      }
+
+      .contact-box {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+      }
+
+      .nav {
+        height: auto;
+      }
+
+      .nav-inner {
+        height: auto;
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .brand span {
+        max-width: 142px;
+      }
+
+      .hero {
+        gap: 28px;
+        padding-top: 32px;
+      }
+
+      .hero-copy,
+      .hero p {
+        max-width: calc(100vw - 24px);
+      }
+
+      .hero h1,
+      .section-title,
+      .contact-box h2 {
+        line-height: 1;
+      }
+
+      .actions,
+      .footer-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-media,
+      .hero-media img {
+        min-height: 360px;
+      }
+
+      .logo-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .about-list li,
+      .workflow-list {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-panel {
+        position: static;
+        width: auto;
+        margin: -118px 12px 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page</h1>
-    <p>This is a simple web page hosted on GitHub Pages.</p>
+  <div class="page">
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top" aria-label="Về đầu trang">
+          <img src="https://avatars.githubusercontent.com/u/174565603?v=4" alt="Ảnh đại diện GitHub của lam_data_nghiep_du">
+          <span>lam_data_nghiep_du</span>
+        </a>
+        <nav class="nav-links" aria-label="Điều hướng chính">
+          <a href="#projects">Dự án</a>
+          <a href="#workflow">Cách làm</a>
+          <a href="https://github.com/vd4-dee" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="wrap hero">
+        <div class="hero-copy">
+          <h1>Data tools builder</h1>
+          <p><span>Tôi xây công cụ Python và Excel</span><span>cho dữ liệu nghiệp vụ cần kiểm tra được.</span></p>
+          <div class="actions">
+            <a class="button primary" href="#projects">Xem dự án</a>
+            <a class="button secondary" href="https://github.com/vd4-dee" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+        <figure class="hero-media" aria-label="Không gian làm việc developer">
+          <img src="assets/developer-workspace-hero.jpg" width="1586" height="992" alt="Bàn làm việc developer với laptop và tín hiệu tự động hóa dữ liệu">
+          <figcaption class="profile-panel">
+            <strong>vd4-dee on GitHub</strong>
+            <p>12 public repositories, tập trung vào mail workflow, reconciliation, app desktop và ứng dụng học tập.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="logo-rail" aria-label="Công nghệ thường dùng">
+        <div class="wrap logo-row">
+          <a href="https://github.com/vd4-dee" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/github/167a52" alt="GitHub"><span class="sr-only">GitHub</span></a>
+          <a href="https://www.python.org" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/python/167a52" alt="Python"><span class="sr-only">Python</span></a>
+          <a href="https://vuejs.org" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/vuedotjs/167a52" alt="Vue"><span class="sr-only">Vue</span></a>
+          <a href="https://vite.dev" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/vite/167a52" alt="Vite"><span class="sr-only">Vite</span></a>
+          <a href="https://www.sqlite.org" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/sqlite/167a52" alt="SQLite"><span class="sr-only">SQLite</span></a>
+          <a href="https://tailwindcss.com" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/tailwindcss/167a52" alt="Tailwind CSS"><span class="sr-only">Tailwind CSS</span></a>
+        </div>
+      </div>
+
+      <section class="about" id="about">
+        <div class="wrap about-grid">
+          <div>
+            <h2 class="section-title">Từ file nghiệp vụ tới phần mềm chạy được.</h2>
+            <p class="section-lede">Portfolio này gom các project gần nhất trên GitHub thành một câu chuyện rõ hơn: đọc dữ liệu, kiểm tra, tự động hóa và đóng gói thành công cụ cho người dùng cuối.</p>
+            <ul class="about-list">
+              <li>
+                <span>Focus</span>
+                <p>Python automation, Excel processing, desktop app, mail workflow và reconciliation cho dữ liệu vận hành.</p>
+              </li>
+              <li>
+                <span>Output</span>
+                <p>Ưu tiên artifact chạy được: CLI, web UI, workbook xuất kết quả, log kiểm tra và hướng dẫn triển khai.</p>
+              </li>
+              <li>
+                <span>Style</span>
+                <p>Làm nhanh nhưng vẫn để lại cấu trúc có thể bảo trì, kiểm chứng và mở rộng khi nghiệp vụ đổi.</p>
+              </li>
+            </ul>
+          </div>
+          <aside class="stat-block" aria-label="Thông tin GitHub">
+            <img src="https://avatars.githubusercontent.com/u/174565603?v=4" alt="Ảnh đại diện GitHub">
+            <dl>
+              <div>
+                <dt>GitHub</dt>
+                <dd>vd4-dee</dd>
+              </div>
+              <div>
+                <dt>Tên hiển thị</dt>
+                <dd>lam_data_nghiep_du</dd>
+              </div>
+              <div>
+                <dt>Public repos</dt>
+                <dd id="repo-count">12</dd>
+              </div>
+              <div>
+                <dt>Repo mới nhất</dt>
+                <dd id="latest-repo">mail_lib</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <div class="wrap">
+          <h2 class="section-title">Dự án GitHub gần đây.</h2>
+          <p class="section-lede">Danh sách này được fetch trực tiếp từ GitHub khi trang mở. Fallback bên dưới dùng snapshot ngày 2026-06-08.</p>
+          <div id="repo-error" class="error-box" hidden></div>
+          <div id="project-grid" class="project-grid" aria-live="polite">
+            <article class="project-card featured skeleton"></article>
+            <div class="project-stack">
+              <article class="project-card skeleton"></article>
+              <article class="project-card skeleton"></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow" id="workflow">
+        <div class="wrap">
+          <h2 class="section-title">Một cách làm thiên về kiểm chứng.</h2>
+          <p class="section-lede">Tôi thường bắt đầu từ file thật, mô tả lỗi thật hoặc workflow đang lặp lại, rồi biến nó thành công cụ có thể chạy lại.</p>
+          <div class="workflow-grid">
+            <div class="workflow-panel">
+              <h3>Phân tích nghiệp vụ trước, đóng gói sau.</h3>
+              <p>Với các bài toán dữ liệu, phần khó thường nằm ở điều kiện ngoại lệ, file bẩn và cách người dùng kiểm tra kết quả. Code chỉ là lớp sau cùng.</p>
+              <div class="workflow-list">
+                <div>
+                  <strong>Nhập liệu</strong>
+                  <p>Đọc CSV, Excel, folder batch hoặc dữ liệu export từ hệ thống vận hành.</p>
+                </div>
+                <div>
+                  <strong>Chuẩn hóa</strong>
+                  <p>Làm sạch kiểu dữ liệu, cột khóa, mapping và các biến thể file thường gặp.</p>
+                </div>
+                <div>
+                  <strong>Đối chiếu</strong>
+                  <p>So sánh nguồn, phân loại chênh lệch, giữ lại log để người dùng truy vết.</p>
+                </div>
+                <div>
+                  <strong>Bàn giao</strong>
+                  <p>Xuất workbook, hướng dẫn chạy, giao diện đơn giản hoặc desktop shell khi cần.</p>
+                </div>
+              </div>
+            </div>
+            <aside class="workflow-panel side-note">
+              <h3>Thích hợp cho team đang có nhiều file và ít thời gian kiểm thủ công.</h3>
+              <p>Đặc biệt hữu ích khi quy trình lặp lại hằng tuần hoặc hằng tháng nhưng vẫn cần người nghiệp vụ xem được kết quả.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="wrap contact-box">
+          <div>
+            <h2>Cùng xem một workflow thật.</h2>
+            <p>Nếu bạn đang có file Excel, danh sách email, dữ liệu cần đối soát hoặc ý tưởng app nội bộ, GitHub của tôi là nơi tốt nhất để bắt đầu xem cách tôi triển khai.</p>
+          </div>
+          <a class="button primary" href="https://github.com/vd4-dee" target="_blank" rel="noreferrer">Mở GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-inner">
+        <span>Built for GitHub Pages.</span>
+        <span>Profile data from github.com/vd4-dee</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const fallbackRepos = [
+      {
+        name: "mail_lib",
+        description: "Desktop app gửi email hàng loạt qua Outlook, đọc danh sách từ Excel, render template HTML và tạo nháp an toàn.",
+        html_url: "https://github.com/vd4-dee/mail_lib",
+        language: "Python",
+        pushed_at: "2026-06-08T01:36:18Z"
+      },
+      {
+        name: "reconcile-tool-professional",
+        description: "Công cụ desktop cho reconciliation: import dữ liệu, transform kiểu Power Query, match hai nguồn và export kết quả.",
+        html_url: "https://github.com/vd4-dee/reconcile-tool-professional",
+        language: "Python",
+        pushed_at: "2026-05-07T12:19:27Z"
+      },
+      {
+        name: "quiz-full",
+        description: "Hệ thống quiz với Vue 3 và PocketBase, có quản lý câu hỏi, làm bài theo thời gian và thống kê kết quả.",
+        html_url: "https://github.com/vd4-dee/quiz-full",
+        language: "Vue",
+        pushed_at: "2025-09-02T05:27:59Z"
+      },
+      {
+        name: "quiz",
+        description: "Ứng dụng quiz JavaScript gọn nhẹ cho luồng học tập và kiểm tra kiến thức.",
+        html_url: "https://github.com/vd4-dee/quiz",
+        language: "JavaScript",
+        pushed_at: "2025-09-02T05:18:52Z"
+      },
+      {
+        name: "app_af_v3",
+        description: "Bộ ghi chú và scaffold Python cho các quy trình xử lý dữ liệu nội bộ.",
+        html_url: "https://github.com/vd4-dee/app_af_v3",
+        language: "Python",
+        pushed_at: "2025-05-27T05:05:32Z"
+      }
+    ];
+
+    const projectDescriptions = {
+      mail_lib: "Desktop app gửi email hàng loạt qua Outlook, đọc danh sách từ Excel, render template HTML và tạo nháp an toàn.",
+      "reconcile-tool-professional": "Công cụ desktop cho reconciliation: import dữ liệu, transform kiểu Power Query, match hai nguồn và export kết quả.",
+      "quiz-full": "Hệ thống quiz với Vue 3 và PocketBase, có quản lý câu hỏi, làm bài theo thời gian và thống kê kết quả.",
+      quiz: "Ứng dụng quiz JavaScript gọn nhẹ cho luồng học tập và kiểm tra kiến thức.",
+      app_af_v3: "Bộ ghi chú và scaffold Python cho các quy trình xử lý dữ liệu nội bộ.",
+      app_af_v3_prod: "Phiên bản triển khai cho nhóm công cụ Python xử lý dữ liệu nội bộ.",
+      app_html_thuan: "Thử nghiệm app HTML và Python phục vụ các thao tác nhanh trên dữ liệu.",
+      web_down: "Công cụ Python hỗ trợ tải dữ liệu web trong workflow tự động hóa."
+    };
+
+    const grid = document.querySelector("#project-grid");
+    const errorBox = document.querySelector("#repo-error");
+    const repoCount = document.querySelector("#repo-count");
+    const latestRepo = document.querySelector("#latest-repo");
+
+    function formatDate(value) {
+      return new Intl.DateTimeFormat("en", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      }).format(new Date(value));
+    }
+
+    function describe(repo) {
+      return repo.description || projectDescriptions[repo.name] || "Một project GitHub trong hệ sinh thái công cụ dữ liệu và ứng dụng nội bộ.";
+    }
+
+    function renderProjects(repos) {
+      const visibleRepos = repos.filter((repo) => !repo.archived).slice(0, 5);
+      const cards = visibleRepos.map((repo, index) => {
+        const meta = [
+          repo.language || "Code",
+          `Pushed ${formatDate(repo.pushed_at)}`
+        ];
+
+        return `
+          <article class="project-card ${index === 0 ? "featured" : ""}">
+            <div>
+              <h3>${repo.name}</h3>
+              <p>${describe(repo)}</p>
+              <div class="project-meta">
+                ${meta.map((item) => `<span class="chip">${item}</span>`).join("")}
+              </div>
+            </div>
+            <a class="project-link" href="${repo.html_url}" target="_blank" rel="noreferrer">Repo</a>
+          </article>
+        `;
+      });
+
+      grid.innerHTML = `
+        ${cards[0] || ""}
+        <div class="project-stack">
+          ${cards.slice(1).join("")}
+        </div>
+      `;
+
+      latestRepo.textContent = visibleRepos[0]?.name || "mail_lib";
+    }
+
+    async function loadRepos() {
+      try {
+        const [userResponse, repoResponse] = await Promise.all([
+          fetch("https://api.github.com/users/vd4-dee"),
+          fetch("https://api.github.com/users/vd4-dee/repos?sort=pushed&direction=desc&per_page=8")
+        ]);
+
+        if (!userResponse.ok || !repoResponse.ok) {
+          throw new Error("GitHub API unavailable");
+        }
+
+        const user = await userResponse.json();
+        const repos = await repoResponse.json();
+        repoCount.textContent = user.public_repos ?? "12";
+        renderProjects(repos);
+      } catch (error) {
+        errorBox.hidden = false;
+        errorBox.textContent = "Không lấy được dữ liệu GitHub live, đang dùng snapshot gần nhất.";
+        renderProjects(fallbackRepos);
+      }
+    }
+
+    loadRepos();
+  </script>
 </body>
 </html>
